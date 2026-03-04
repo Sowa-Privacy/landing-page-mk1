@@ -2,28 +2,8 @@
     "redirects": [
         {
             "source": "/",
-            "destination": "/de/",
+            "destination": "/de/index.html",
             "permanent": false
-        },
-        {
-            "source": "/de",
-            "destination": "/de/",
-            "permanent": false
-        },
-        {
-            "source": "/en",
-            "destination": "/en/",
-            "permanent": false
-        }
-    ],
-    "rewrites": [
-        {
-            "source": "/de/",
-            "destination": "/de/index.html"
-        },
-        {
-            "source": "/en/",
-            "destination": "/en/index.html"
         }
     ],
     "headers": [
@@ -45,6 +25,5 @@
                 }
             ]
         }
-    ],
-    "trailingSlash": false
+    ]
 }
