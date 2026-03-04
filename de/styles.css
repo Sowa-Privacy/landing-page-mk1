@@ -1769,10 +1769,11 @@ a {
         max-height: 460px;
     }
 
-    /* Force hero-visual visible — fade-up observer may not trigger when stacked below fold */
-    .hero-visual.fade-up {
+    /* Force all fade-up elements visible at stacked layout — observer may not trigger below fold */
+    .fade-up {
         opacity: 1 !important;
         transform: translateY(0) !important;
+        transition: none !important;
     }
 }
 
