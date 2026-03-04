@@ -1759,9 +1759,20 @@ a {
         overflow: hidden;
     }
 
+    .chat-demo-container>div {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .chatgpt-window {
         min-height: 420px;
         max-height: 460px;
+    }
+
+    /* Force hero-visual visible — fade-up observer may not trigger when stacked below fold */
+    .hero-visual.fade-up {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
 }
 
