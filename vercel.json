@@ -1,26 +1,50 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/de/index.html" },
-    { "source": "/de", "destination": "/de/index.html" },
-    { "source": "/en", "destination": "/en/index.html" },
-    { "source": "/de/:path(.*\\.html)", "destination": "/de/:path" },
-    { "source": "/en/:path(.*\\.html)", "destination": "/en/:path" },
-    { "source": "/de/:path*", "destination": "/de/:path*.html" },
-    { "source": "/en/:path*", "destination": "/en/:path*.html" }
-  ],
-  "headers": [
-    {
-      "source": "/de/assets/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    },
-    {
-      "source": "/en/assets/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    }
-  ],
-  "trailingSlash": false
+    "redirects": [
+        {
+            "source": "/",
+            "destination": "/de/",
+            "permanent": false
+        },
+        {
+            "source": "/de",
+            "destination": "/de/",
+            "permanent": false
+        },
+        {
+            "source": "/en",
+            "destination": "/en/",
+            "permanent": false
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/de/",
+            "destination": "/de/index.html"
+        },
+        {
+            "source": "/en/",
+            "destination": "/en/index.html"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/de/assets/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        },
+        {
+            "source": "/en/assets/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        }
+    ],
+    "trailingSlash": false
 }
