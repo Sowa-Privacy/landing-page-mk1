@@ -50,6 +50,9 @@
                     <span class="cd-secs">00</span>s
                 </span>
             </div>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
             <div class="nav-right">
                 <div class="lang-switch">
                     <a href="/de/index.html" class="lang-btn ">DE</a>
@@ -66,6 +69,7 @@
             </div>
         </div>
     </nav>
+    <div class="nav-overlay"></div>
 
     <!-- Hero Section -->
     <header class="hero section-padding">
@@ -86,129 +90,139 @@
                 </div>
             </div>
             <div class="hero-visual fade-up delay-200">
-                                    <div class="chat-demo-container">
-                        <!-- ChatGPT Window -->
-                        <div class="chatgpt-window active">
-                            <!-- ChatGPT Header -->
-                            <div class="chatgpt-header">
-                                <div class="chatgpt-model"><strong>ChatGPT</strong> <span class="model-version">5.2</span>
-                                    <i data-lucide="chevron-right" style="width:14px;height:14px;"></i>
-                                </div>
-                                <div class="chatgpt-header-actions">
-                                    <i data-lucide="upload" style="width:18px;height:18px;opacity:0.5;"></i>
-                                    <i data-lucide="copy" style="width:18px;height:18px;opacity:0.5;"></i>
-                                </div>
+                <div class="chat-demo-container">
+                    <!-- ChatGPT Window -->
+                    <div class="chatgpt-window active">
+                        <!-- ChatGPT Header -->
+                        <div class="chatgpt-header">
+                            <div class="chatgpt-model"><strong>ChatGPT</strong> <span class="model-version">5.2</span>
+                                <i data-lucide="chevron-right" style="width:14px;height:14px;"></i>
                             </div>
-                            <!-- Chat Messages Area -->
-                            <div class="chatgpt-body js-chat-demo" data-lang="en">
-                                <!-- Messages injected by JS -->
+                            <div class="chatgpt-header-actions">
+                                <i data-lucide="upload" style="width:18px;height:18px;opacity:0.5;"></i>
+                                <i data-lucide="copy" style="width:18px;height:18px;opacity:0.5;"></i>
                             </div>
-                            <!-- Input Area -->
-                            <div class="chatgpt-input-area">
-                                <div class="chatgpt-input-box">
-                                    <span class="chat-typing-text"></span>
-                                    <span class="chat-cursor"></span>
-                                    <span class="chatgpt-placeholder">Ask anything</span>
+                        </div>
+                        <!-- Chat Messages Area -->
+                        <div class="chatgpt-body js-chat-demo" data-lang="en">
+                            <!-- Messages injected by JS -->
+                        </div>
+                        <!-- Input Area -->
+                        <div class="chatgpt-input-area">
+                            <div class="chatgpt-input-box">
+                                <span class="chat-typing-text"></span>
+                                <span class="chat-cursor"></span>
+                                <span class="chatgpt-placeholder">Ask anything</span>
+                            </div>
+                            <div class="chatgpt-toolbar">
+                                <div class="chatgpt-toolbar-left">
+                                    <i data-lucide="plus"></i>
+                                    <i data-lucide="globe"></i>
+                                    <i data-lucide="braces"></i>
+                                    <i data-lucide="sparkles"></i>
+                                    <span class="toolbar-version">5.2</span>
                                 </div>
-                                <div class="chatgpt-toolbar">
-                                    <div class="chatgpt-toolbar-left">
-                                        <i data-lucide="plus"></i>
-                                        <i data-lucide="globe"></i>
-                                        <i data-lucide="braces"></i>
-                                        <i data-lucide="sparkles"></i>
-                                        <span class="toolbar-version">5.2</span>
-                                    </div>
-                                    <div class="chatgpt-toolbar-right">
-                                        <i data-lucide="circle" style="width:20px;height:20px;"></i>
-                                        <i data-lucide="mic" style="width:20px;height:20px;"></i>
-                                        <button class="chatgpt-send-btn chatgpt-btn" disabled><i data-lucide="arrow-up"></i></button>
-                                    </div>
+                                <div class="chatgpt-toolbar-right">
+                                    <i data-lucide="circle" style="width:20px;height:20px;"></i>
+                                    <i data-lucide="mic" style="width:20px;height:20px;"></i>
+                                    <button class="chatgpt-send-btn chatgpt-btn" disabled><i
+                                            data-lucide="arrow-up"></i></button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Claude Window -->
-                        <div class="claude-window hidden">
-                            <div class="claude-body js-claude-demo" data-lang="en">
-                                <div class="claude-greeting">
-                                    <svg viewBox="0 0 24 24" class="claude-logo" fill="currentColor">
-                                        <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z"></path>
-                                    </svg>
-                                    <h3>Coffee and Claude time?</h3>
-                                </div>
-                                <!-- Messages injected by JS -->
-                                <div class="claude-messages"></div>
+                    <!-- Claude Window -->
+                    <div class="claude-window hidden">
+                        <div class="claude-body js-claude-demo" data-lang="en">
+                            <div class="claude-greeting">
+                                <svg viewBox="0 0 24 24" class="claude-logo" fill="currentColor">
+                                    <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z">
+                                    </path>
+                                </svg>
+                                <h3>Coffee and Claude time?</h3>
                             </div>
-                            <div class="claude-input-container">
-                                <div class="claude-input-area">
-                                    <div class="claude-input-box">
-                                        <span class="claude-typing-text"></span>
-                                        <span class="claude-cursor"></span>
-                                        <span class="claude-placeholder">How can I help you today?</span>
-                                    </div>
-                                    <div class="claude-toolbar">
-                                        <i data-lucide="plus" style="width: 20px; height: 20px;"></i>
-                                        <div class="claude-toolbar-right">
-                                            <span class="claude-model-selector">Sonnet 4.6 <span style="opacity:0.5">Extended</span> <i data-lucide="chevron-down" style="width:14px;height:14px;margin-left:4px;"></i></span>
-                                            <button class="claude-send-btn" disabled><i data-lucide="arrow-up"></i></button>
-                                        </div>
+                            <!-- Messages injected by JS -->
+                            <div class="claude-messages"></div>
+                        </div>
+                        <div class="claude-input-container">
+                            <div class="claude-input-area">
+                                <div class="claude-input-box">
+                                    <span class="claude-typing-text"></span>
+                                    <span class="claude-cursor"></span>
+                                    <span class="claude-placeholder">How can I help you today?</span>
+                                </div>
+                                <div class="claude-toolbar">
+                                    <i data-lucide="plus" style="width: 20px; height: 20px;"></i>
+                                    <div class="claude-toolbar-right">
+                                        <span class="claude-model-selector">Sonnet 4.6 <span
+                                                style="opacity:0.5">Extended</span> <i data-lucide="chevron-down"
+                                                style="width:14px;height:14px;margin-left:4px;"></i></span>
+                                        <button class="claude-send-btn" disabled><i data-lucide="arrow-up"></i></button>
                                     </div>
                                 </div>
-                                <div class="claude-footer">
-                                    <span>Connect your tools to Claude</span>
-                                    <div class="claude-tools">
-                                       <i data-lucide="book" style="width:12px;height:12px;"></i>
-                                       <i data-lucide="database" style="width:12px;height:12px;"></i>
-                                       <i data-lucide="globe" style="width:12px;height:12px;"></i>
-                                    </div>
+                            </div>
+                            <div class="claude-footer">
+                                <span>Connect your tools to Claude</span>
+                                <div class="claude-tools">
+                                    <i data-lucide="book" style="width:12px;height:12px;"></i>
+                                    <i data-lucide="database" style="width:12px;height:12px;"></i>
+                                    <i data-lucide="globe" style="width:12px;height:12px;"></i>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Gemini Window -->
-                        <div class="gemini-window hidden">
-                            <div class="gemini-header-bar">
-                                <span class="gemini-brand">Gemini</span>
+                    <!-- Gemini Window -->
+                    <div class="gemini-window hidden">
+                        <div class="gemini-header-bar">
+                            <span class="gemini-brand">Gemini</span>
+                        </div>
+                        <div class="gemini-body js-gemini-demo" data-lang="en">
+                            <div class="gemini-greeting">
+                                <div class="gemini-sparkle-row"><span class="gemini-sparkle"><svg viewBox="0 0 28 28"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                            style="width:28px;height:28px;">
+                                            <defs>
+                                                <linearGradient id="gemini-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:#4285f4" />
+                                                    <stop offset="35%" style="stop-color:#9b72cb" />
+                                                    <stop offset="65%" style="stop-color:#d96570" />
+                                                    <stop offset="100%" style="stop-color:#d96570" />
+                                                </linearGradient>
+                                            </defs>
+                                            <path
+                                                d="M14 0C14 7.732 7.732 14 0 14c7.732 0 14 6.268 14 14 0-7.732 6.268-14 14-14C20.268 14 14 7.732 14 0Z"
+                                                fill="url(#gemini-grad)" />
+                                        </svg></span> <span class="gemini-hello">Hello</span></div>
+                                <h3>What shall we work on?</h3>
                             </div>
-                            <div class="gemini-body js-gemini-demo" data-lang="en">
-                                <div class="gemini-greeting">
-                                    <div class="gemini-sparkle-row"><span class="gemini-sparkle"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
-  <defs>
-    <linearGradient id="gemini-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4285f4"/>
-      <stop offset="35%" style="stop-color:#9b72cb"/>
-      <stop offset="65%" style="stop-color:#d96570"/>
-      <stop offset="100%" style="stop-color:#d96570"/>
-    </linearGradient>
-  </defs>
-  <path d="M14 0C14 7.732 7.732 14 0 14c7.732 0 14 6.268 14 14 0-7.732 6.268-14 14-14C20.268 14 14 7.732 14 0Z" fill="url(#gemini-grad)"/>
-</svg></span> <span class="gemini-hello">Hello</span></div>
-                                    <h3>What shall we work on?</h3>
+                            <div class="gemini-messages"></div>
+                        </div>
+                        <div class="gemini-input-container">
+                            <div class="gemini-input-area">
+                                <div class="gemini-input-box">
+                                    <span class="gemini-typing-text"></span>
+                                    <span class="gemini-cursor"></span>
+                                    <span class="gemini-placeholder">Ask Gemini 3</span>
                                 </div>
-                                <div class="gemini-messages"></div>
-                            </div>
-                            <div class="gemini-input-container">
-                                <div class="gemini-input-area">
-                                    <div class="gemini-input-box">
-                                        <span class="gemini-typing-text"></span>
-                                        <span class="gemini-cursor"></span>
-                                        <span class="gemini-placeholder">Ask Gemini 3</span>
+                                <div class="gemini-toolbar">
+                                    <div class="gemini-toolbar-left">
+                                        <i data-lucide="plus" style="width:18px;height:18px;"></i>
+                                        <span class="gemini-tools-btn"><i data-lucide="sliders-horizontal"
+                                                style="width:14px;height:14px;"></i> Tools</span>
                                     </div>
-                                    <div class="gemini-toolbar">
-                                        <div class="gemini-toolbar-left">
-                                            <i data-lucide="plus" style="width:18px;height:18px;"></i>
-                                            <span class="gemini-tools-btn"><i data-lucide="sliders-horizontal" style="width:14px;height:14px;"></i> Tools</span>
-                                        </div>
-                                        <div class="gemini-toolbar-right">
-                                            <span class="gemini-model-badge">Pro <i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
-                                            <i data-lucide="mic" style="width:18px;height:18px;"></i>
-                                            <button class="gemini-send-btn" disabled><i data-lucide="arrow-up"></i></button>
-                                        </div>
+                                    <div class="gemini-toolbar-right">
+                                        <span class="gemini-model-badge">Pro <i data-lucide="chevron-down"
+                                                style="width:12px;height:12px;"></i></span>
+                                        <i data-lucide="mic" style="width:18px;height:18px;"></i>
+                                        <button class="gemini-send-btn" disabled><i data-lucide="arrow-up"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
             </div>
         </div>

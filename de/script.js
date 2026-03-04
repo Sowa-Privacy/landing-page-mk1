@@ -2,6 +2,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lucide Icons
     lucide.createIcons();
 
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navRight = document.querySelector('.nav-right');
+    const navOverlay = document.querySelector('.nav-overlay');
+
+    if (menuToggle && navRight) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navRight.classList.toggle('open');
+            if (navOverlay) navOverlay.classList.toggle('active');
+            document.body.style.overflow = navRight.classList.contains('open') ? 'hidden' : '';
+        });
+
+        if (navOverlay) {
+            navOverlay.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navRight.classList.remove('open');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Close menu when a nav link is clicked
+        navRight.querySelectorAll('.nav-links a, .nav-cta a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navRight.classList.remove('open');
+                if (navOverlay) navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
     // Intro Splash Screen
     const introOverlay = document.getElementById('intro-overlay');
     if (introOverlay) {

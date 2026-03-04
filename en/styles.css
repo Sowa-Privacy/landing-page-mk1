@@ -1657,8 +1657,50 @@ a {
     transition-delay: 0.4s;
 }
 
-/* Responsive adjustments */
+/* ============================================
+   RESPONSIVE — Mobile Optimisation
+   ============================================ */
+
+/* Hamburger toggle (hidden on desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 200;
+    position: relative;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-main);
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger → X animation */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ---- iPad & small laptops (≤ 992px) ---- */
 @media (max-width: 992px) {
+
+    .hidden-mobile {
+        display: none !important;
+    }
 
     .hero-content,
     .flex-row {
@@ -1691,13 +1733,144 @@ a {
     .grid-4 {
         grid-template-columns: repeat(2, 1fr);
     }
-}
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    .about-row,
+    .about-row.reverse {
+        flex-direction: column;
+        gap: 2rem;
     }
 
+    .about-text {
+        text-align: center;
+    }
+
+    .feature-list {
+        text-align: left;
+    }
+
+    .chat-demo-container {
+        min-height: 460px;
+    }
+
+    .chatgpt-window {
+        min-height: 420px;
+        max-height: 460px;
+    }
+}
+
+/* ---- Phones & small tablets (≤ 768px) ---- */
+@media (max-width: 768px) {
+
+    :root {
+        --section-gap: 2.5rem;
+    }
+
+    /* Show hamburger */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Mobile nav drawer */
+    .nav-right {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(10, 10, 12, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5rem 2rem 2rem;
+        gap: 2rem;
+        z-index: 150;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 1px solid var(--glass-border);
+        overflow-y: auto;
+    }
+
+    .nav-right.open {
+        right: 0;
+    }
+
+    /* Overlay behind drawer */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 140;
+    }
+
+    .nav-overlay.active {
+        display: block;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .nav-links a {
+        font-size: 1.15rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--glass-border);
+        width: 100%;
+        display: block;
+    }
+
+    .nav-cta {
+        width: 100%;
+    }
+
+    .nav-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .lang-switch {
+        align-self: flex-start;
+    }
+
+    /* Navbar mobile */
+    .navbar {
+        width: calc(100% - 1rem);
+        padding: 0.75rem 1rem;
+        top: 0.5rem;
+        border-radius: 16px;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: auto;
+        padding-top: 6rem;
+        padding-bottom: 2rem;
+    }
+
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.05rem;
+        max-width: 100%;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    /* Grids → single column */
     .grid-3,
     .grid-4,
     .pricing-cards {
@@ -1708,10 +1881,37 @@ a {
         flex-direction: column;
     }
 
-    .hero-headline {
-        font-size: 2.5rem;
+    /* Chat demo */
+    .chat-demo-container {
+        min-height: 400px;
     }
 
+    .chatgpt-window {
+        min-height: 360px;
+        max-height: 400px;
+    }
+
+    .chatgpt-input-box {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+
+    .chat-demo-container .claude-greeting h3,
+    .chat-demo-container .gemini-greeting h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Sub-hero */
+    .sub-hero {
+        min-height: auto;
+        padding-top: 7rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* Contact */
     .contact-form {
         flex-direction: column;
         border-radius: var(--border-radius-sm);
@@ -1722,12 +1922,136 @@ a {
         border-radius: var(--border-radius-sm);
     }
 
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-hero {
+        padding: 6rem 0 2rem;
+    }
+
+    .contact-form-card {
+        padding: 1.5rem;
+    }
+
+    /* FAQ */
+    .faq-question {
+        font-size: 1rem;
+        padding: 1.25rem;
+    }
+
+    /* Footer */
     .footer-bottom .flex-between {
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
     }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* About page */
+    .about-detail .about-row {
+        margin-bottom: 3rem;
+    }
+
+    .about-detail .about-text h3 {
+        font-size: 1.8rem;
+    }
+
+    .about-logo-img {
+        max-width: 180px;
+    }
+
+    /* Values grid */
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Feature list */
+    .feature-list li {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .feature-list li i {
+        margin: 0 auto;
+    }
+
+    /* Container tighter */
+    .container {
+        padding: 0 1.25rem;
+    }
 }
+
+/* ---- Small phones (≤ 480px) ---- */
+@media (max-width: 480px) {
+
+    .hero-headline {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .section-title {
+        font-size: 1.65rem;
+    }
+
+    .section-description {
+        font-size: 0.95rem;
+    }
+
+    .btn-large {
+        padding: 0.85rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .chat-demo-container {
+        min-height: 350px;
+    }
+
+    .chatgpt-window {
+        min-height: 320px;
+        max-height: 350px;
+    }
+
+    .claude-greeting h3 {
+        font-size: 1.1rem;
+    }
+
+    .faq-question {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+
+    .navbar {
+        padding: 0.6rem 0.75rem;
+    }
+
+    .logo span {
+        font-size: 1rem;
+    }
+
+    .logo-img {
+        height: 26px;
+    }
+
+    .sub-hero {
+        padding-top: 6rem;
+    }
+}
+
 
 /* FAQ Section */
 .faq-grid {
@@ -1885,18 +2209,7 @@ a {
     font-size: 1.25rem;
 }
 
-@media (max-width: 992px) {
 
-    .about-row,
-    .about-row.reverse {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .about-text {
-        text-align: center;
-    }
-}
 
 /* Subpage Styles */
 .sub-hero {
@@ -2068,14 +2381,4 @@ a {
     font-size: 0.9rem;
     color: var(--text-muted);
     line-height: 1.5;
-}
-
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-hero {
-        padding: 8rem 0 2rem;
-    }
 }
