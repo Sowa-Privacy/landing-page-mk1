@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How it works | SOWA Privacy</title>
+    <meta name="description"
+        content="Learn how SOWA Privacy works as a client-side security layer to anonymize your AI usage.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body class="dark-theme subpage">
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="../assets/logo.svg?v=2" alt="SOWA Privacy Logo" class="logo-img">
+                <span>SOWA Privacy</span>
+            </a>
+            <div class="launch-badge hidden-mobile" id="launch-countdown">
+                <span class="cd-label">Launching in</span>
+                <span class="cd-timer">
+                    <span class="cd-days">29</span>d <span class="cd-sep">&bull;</span>
+                    <span class="cd-hours">00</span>h <span class="cd-sep">&bull;</span>
+                    <span class="cd-mins">00</span>m <span class="cd-sep">&bull;</span>
+                    <span class="cd-secs">00</span>s
+                </span>
+            </div>
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <a href="/de/how-it-works.html" class="lang-btn ">DE</a>
+                    <a href="#" class="lang-btn active">EN</a>
+                </div>
+                <div class="nav-links">
+                    <a href="#" class="active">How it works</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="about.html">About us</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Solution Section (Acting as Hero) -->
+    <section class="solution section-padding sub-hero" style="padding-top: 150px;">
+        <div class="solution-bg-glow glow-3"></div>
+        <div class="container">
+            <div class="flex-row">
+                <div class="col-half fade-up">
+                    <div class="badge-wrapper"><span class="badge green"><i data-lucide="check-circle"></i> The
+                            Solution</span></div>
+                    <h1 class="section-title">Productivity meets <span class="gradient-text">Control</span>.</h1>
+                    <p class="section-description text-left">SOWA Privacy acts as a client-side security layer in the
+                        form of a browser extension. No own servers, no cloud components.</p>
+
+                    <ul class="feature-list">
+                        <li>
+                            <i data-lucide="cpu"></i>
+                            <div>
+                                <strong>Local Real-Time Analysis</strong>
+                                <p>Texts are analyzed before they even leave the user's browser.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="fingerprint"></i>
+                            <div>
+                                <strong>Automated Anonymization</strong>
+                                <p>Detection of names, IBANs, health data, etc., and replacement with neutral
+                                    placeholders.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="zap"></i>
+                            <div>
+                                <strong>Provider Independent</strong>
+                                <p>Works with ChatGPT, Claude, Gemini & Co. without API modification of the target
+                                    systems.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="refresh-cw"></i>
+                            <div>
+                                <strong>Seamless De-Anonymization</strong>
+                                <p>Anonymized values are restored to their originals when the AI responds. You get the
+                                    normal results without letting personal data reach foreign chatbot servers.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-half fade-up delay-200">
+                    <div class="chat-demo-container">
+                        <!-- ChatGPT Window -->
+                        <div class="chatgpt-window active">
+                            <!-- ChatGPT Header -->
+                            <div class="chatgpt-header">
+                                <div class="chatgpt-model"><strong>ChatGPT</strong> <span
+                                        class="model-version">5.2</span>
+                                    <i data-lucide="chevron-right" style="width:14px;height:14px;"></i>
+                                </div>
+                                <div class="chatgpt-header-actions">
+                                    <i data-lucide="upload" style="width:18px;height:18px;opacity:0.5;"></i>
+                                    <i data-lucide="copy" style="width:18px;height:18px;opacity:0.5;"></i>
+                                </div>
+                            </div>
+                            <!-- Chat Messages Area -->
+                            <div class="chatgpt-body js-chat-demo" data-lang="en">
+                                <!-- Messages injected by JS -->
+                            </div>
+                            <!-- Input Area -->
+                            <div class="chatgpt-input-area">
+                                <div class="chatgpt-input-box">
+                                    <span class="chat-typing-text"></span>
+                                    <span class="chat-cursor"></span>
+                                    <span class="chatgpt-placeholder">Ask anything</span>
+                                </div>
+                                <div class="chatgpt-toolbar">
+                                    <div class="chatgpt-toolbar-left">
+                                        <i data-lucide="plus"></i>
+                                        <i data-lucide="globe"></i>
+                                        <i data-lucide="braces"></i>
+                                        <i data-lucide="sparkles"></i>
+                                        <span class="toolbar-version">5.2</span>
+                                    </div>
+                                    <div class="chatgpt-toolbar-right">
+                                        <i data-lucide="circle" style="width:20px;height:20px;"></i>
+                                        <i data-lucide="mic" style="width:20px;height:20px;"></i>
+                                        <button class="chatgpt-send-btn chatgpt-btn" disabled><i
+                                                data-lucide="arrow-up"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Claude Window -->
+                        <div class="claude-window hidden">
+                            <div class="claude-body js-claude-demo" data-lang="en">
+                                <div class="claude-greeting">
+                                    <svg viewBox="0 0 24 24" class="claude-logo" fill="currentColor">
+                                        <path
+                                            d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z">
+                                        </path>
+                                    </svg>
+                                    <h3>Coffee and Claude time?</h3>
+                                </div>
+                                <!-- Messages injected by JS -->
+                                <div class="claude-messages"></div>
+                            </div>
+                            <div class="claude-input-container">
+                                <div class="claude-input-area">
+                                    <div class="claude-input-box">
+                                        <span class="claude-typing-text"></span>
+                                        <span class="claude-cursor"></span>
+                                        <span class="claude-placeholder">How can I help you today?</span>
+                                    </div>
+                                    <div class="claude-toolbar">
+                                        <i data-lucide="plus" style="width: 20px; height: 20px;"></i>
+                                        <div class="claude-toolbar-right">
+                                            <span class="claude-model-selector">Sonnet 4.6 <span
+                                                    style="opacity:0.5">Extended</span> <i data-lucide="chevron-down"
+                                                    style="width:14px;height:14px;margin-left:4px;"></i></span>
+                                            <button class="claude-send-btn" disabled><i
+                                                    data-lucide="arrow-up"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="claude-footer">
+                                    <span>Connect your tools to Claude</span>
+                                    <div class="claude-tools">
+                                        <i data-lucide="book" style="width:12px;height:12px;"></i>
+                                        <i data-lucide="database" style="width:12px;height:12px;"></i>
+                                        <i data-lucide="globe" style="width:12px;height:12px;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gemini Window -->
+                        <div class="gemini-window hidden">
+                            <div class="gemini-header-bar">
+                                <span class="gemini-brand">Gemini</span>
+                            </div>
+                            <div class="gemini-body js-gemini-demo" data-lang="en">
+                                <div class="gemini-greeting">
+                                    <div class="gemini-sparkle-row"><span class="gemini-sparkle"><svg
+                                                viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                style="width:28px;height:28px;">
+                                                <defs>
+                                                    <linearGradient id="gemini-grad" x1="0%" y1="0%" x2="100%"
+                                                        y2="100%">
+                                                        <stop offset="0%" style="stop-color:#4285f4" />
+                                                        <stop offset="35%" style="stop-color:#9b72cb" />
+                                                        <stop offset="65%" style="stop-color:#d96570" />
+                                                        <stop offset="100%" style="stop-color:#d96570" />
+                                                    </linearGradient>
+                                                </defs>
+                                                <path
+                                                    d="M14 0C14 7.732 7.732 14 0 14c7.732 0 14 6.268 14 14 0-7.732 6.268-14 14-14C20.268 14 14 7.732 14 0Z"
+                                                    fill="url(#gemini-grad)" />
+                                            </svg></span> <span class="gemini-hello">Hello</span></div>
+                                    <h3>What shall we work on?</h3>
+                                </div>
+                                <div class="gemini-messages"></div>
+                            </div>
+                            <div class="gemini-input-container">
+                                <div class="gemini-input-area">
+                                    <div class="gemini-input-box">
+                                        <span class="gemini-typing-text"></span>
+                                        <span class="gemini-cursor"></span>
+                                        <span class="gemini-placeholder">Ask Gemini 3</span>
+                                    </div>
+                                    <div class="gemini-toolbar">
+                                        <div class="gemini-toolbar-left">
+                                            <i data-lucide="plus" style="width:18px;height:18px;"></i>
+                                            <span class="gemini-tools-btn"><i data-lucide="sliders-horizontal"
+                                                    style="width:14px;height:14px;"></i> Tools</span>
+                                        </div>
+                                        <div class="gemini-toolbar-right">
+                                            <span class="gemini-model-badge">Pro <i data-lucide="chevron-down"
+                                                    style="width:12px;height:12px;"></i></span>
+                                            <i data-lucide="mic" style="width:18px;height:18px;"></i>
+                                            <button class="gemini-send-btn" disabled><i
+                                                    data-lucide="arrow-up"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontakt" class="cta-section section-padding">
+        <div class="footer-bottom">
+            <div class="container flex-between">
+                <div class="logo-small"><img src="../assets/logo.svg" alt="SOWA Privacy Logo" class="logo-img"> SOWA
+                    Privacy</div>
+                <div class="footer-links">
+                    <a href="#">Imprint</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61586603282806" target="_blank"
+                        rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                    <a href="https://www.instagram.com/sowaprivacy/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="https://x.com/SOWAPrivacy" target="_blank" rel="noopener noreferrer"
+                        aria-label="X (Twitter)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                        </svg></a>
+                    <a href="https://www.linkedin.com/company/sowa-privacy/about/?viewAsMember=true" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                    <a href="https://www.tiktok.com/@sowaprivacy" target="_blank" rel="noopener noreferrer"
+                        aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg></a>
+                </div>
+                <div class="copyright">&copy; 2026 SOWA Privacy. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

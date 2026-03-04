@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | SOWA Privacy - AI Privacy. On Premise.</title>
+    <meta name="description"
+        content="Antworten auf die wichtigsten Fragen rund um die DSGVO-konforme KI-Nutzung mit SOWA Privacy.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body class="dark-theme subpage">
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.svg?v=2" alt="SOWA Privacy Logo" class="logo-img">
+                <span>SOWA Privacy</span>
+            </a>
+            <div class="launch-badge hidden-mobile" id="launch-countdown">
+                <span class="cd-label">Launch in</span>
+                <span class="cd-timer">
+                    <span class="cd-days">29</span>d <span class="cd-sep">&bull;</span>
+                    <span class="cd-hours">00</span>h <span class="cd-sep">&bull;</span>
+                    <span class="cd-mins">00</span>m <span class="cd-sep">&bull;</span>
+                    <span class="cd-secs">00</span>s
+                </span>
+            </div>
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <a href="#" class="lang-btn active">DE</a>
+                    <a href="/en/faq.html" class="lang-btn ">EN</a>
+                </div>
+                <div class="nav-links">
+                    <a href="how-it-works.html">Wie es funktioniert</a>
+                    <a href="#" class="active">FAQ</a>
+                    <a href="about.html">Über uns</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Jetzt starten</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subpage Hero -->
+    <header class="hero section-padding sub-hero">
+        <div class="hero-bg-glow glow-1"></div>
+        <div class="container text-center fade-up">
+            <h1 class="hero-headline">Häufig gestellte <br><span class="gradient-text">Fragen</span>.</h1>
+            <p class="hero-subtitle">
+                Antworten auf die wichtigsten Fragen rund um die SOWA Privacy Architektur.
+            </p>
+        </div>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="faq section-padding">
+        <div class="container container-narrow">
+            <div class="faq-grid fade-up delay-100">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Werden Daten von SOWA Privacy gespeichert?
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nein. SOWA Privacy arbeitet nach dem Zero-Trust-Prinzip als reine Client-Side-Anwendung
+                            (Browser Extension). Es gibt keine SOWA-Server, keine Zwischenspeicherung und keine
+                            Cloud-Infrastruktur. Die Datenverarbeitung findet zu 100% lokal auf dem Endgerät des Nutzers
+                            statt.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Mit welchen KI-Modellen funktioniert die Lösung?
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SOWA Privacy ist anbieterunabhängig. Es fungiert als Proxy zwischen Eingabefenster und
+                            Browser-Request und funktioniert standardmäßig mit gängigen webbasierten Chatbots wie
+                            ChatGPT, Claude oder Gemini, ohne dass eine API-Integration notwendig ist.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Wie werden die Daten anonymisiert?
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sensible Datenklassen (wie Namen, Adressen, IBANs, medizinische Diagnosen) werden durch
+                            lokale Machine-Learning Modelle auf dem Gerät erkannt und vor dem Versand in neutrale Token
+                            (z.B. [PERSON_1]) übersetzt.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Was ist der Unterschied zwischen Community und Enterprise?
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Die Basis-Anonymisierung stellen wir als Open Source zur Verfügung, um absolute Transparenz
+                            zu gewährleisten. Die Enterprise-Version bietet zusätzlich Single-Sign-On (SSO), zentrales
+                            Policy-Management für die gesamte Organisation und Audit-Reportings.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Ist SOWA Privacy DSGVO-konform?
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ja. Da alle Daten ausschließlich lokal auf dem Gerät des Nutzers verarbeitet werden und keine
+                            personenbezogenen Daten an Dritte übermittelt werden, erfüllt SOWA Privacy die Anforderungen
+                            der DSGVO. Sensible Informationen werden vor dem Versand an den KI-Anbieter vollständig
+                            anonymisiert, sodass kein Rückschluss auf reale Personen möglich ist.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Beeinflusst SOWA Privacy die Leistung meines Browsers?
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>SOWA Privacy wurde für minimale Ressourcennutzung optimiert. Die lokalen ML-Modelle sind
+                            kompakt und laufen effizient im Browser. Die Anonymisierung erfolgt in Echtzeit –
+                            typischerweise
+                            in unter 100 Millisekunden – sodass Sie keinen spürbaren Unterschied bei der Nutzung
+                            bemerken werden.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Wie schnell ist SOWA Privacy einsatzbereit?
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Die Community-Version kann in wenigen Minuten als Browser-Extension installiert werden – ohne
+                            Server-Setup oder IT-Abteilung. Für die Enterprise-Version bieten wir eine geführte
+                            Implementierung mit SSO-Anbindung, Policy-Konfiguration und Mitarbeiter-Onboarding,
+                            die in der Regel innerhalb von 1–2 Werktagen abgeschlossen ist.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Kann ich eigene Anonymisierungsregeln definieren?
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ja. In der Enterprise-Version können Administratoren branchenspezifische Datenklassen,
+                            benutzerdefinierte Erkennungsmuster und Ausnahmeregeln zentral konfigurieren. So lassen sich
+                            beispielsweise interne Projektnamen, Kundennummern oder medizinische Fachbegriffe gezielt
+                            schützen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontakt" class="cta-section section-padding">
+        <div class="footer-bottom">
+            <div class="container flex-between">
+                <div class="logo-small"><img src="assets/logo.svg" alt="SOWA Privacy Logo" class="logo-img"> SOWA
+                    Privacy</div>
+                <div class="footer-links">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61586603282806" target="_blank"
+                        rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                    <a href="https://www.instagram.com/sowaprivacy/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="https://x.com/SOWAPrivacy" target="_blank" rel="noopener noreferrer"
+                        aria-label="X (Twitter)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                        </svg></a>
+                    <a href="https://www.linkedin.com/company/sowa-privacy/about/?viewAsMember=true" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                    <a href="https://www.tiktok.com/@sowaprivacy" target="_blank" rel="noopener noreferrer"
+                        aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg></a>
+                </div>
+                <div class="copyright">&copy; 2026 SOWA Privacy. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

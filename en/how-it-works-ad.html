@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOWA Privacy - How It Works Ad</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a12;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Background Glows */
+        .ad-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+        }
+
+        .ad-glow-1 {
+            width: 600px;
+            height: 600px;
+            background: rgba(74, 90, 156, 0.35);
+            top: -200px;
+            left: -200px;
+            animation: glowPulse 8s ease-in-out infinite;
+        }
+
+        .ad-glow-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(16, 185, 129, 0.15);
+            bottom: -200px;
+            right: -200px;
+            animation: glowPulse 8s ease-in-out infinite 2s;
+        }
+
+        /* Scene Container */
+        .ad-scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: scale(0.97);
+            pointer-events: none;
+        }
+
+        .ad-scene.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        /* Scene 1: Website-style Hero Intro */
+        .hero-intro {
+            text-align: center;
+            width: 100%;
+            padding: 0 60px;
+        }
+
+        .hero-intro-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+            opacity: 0;
+        }
+
+        .hero-intro-nav img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .hero-intro-nav span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .hero-intro-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 24px;
+            opacity: 0;
+        }
+
+        .hero-intro-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: dotBlink 1.5s infinite;
+        }
+
+        .hero-intro h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-intro h1 .line1 {
+            opacity: 0;
+            display: block;
+        }
+
+        .hero-intro h1 .line2 {
+            opacity: 0;
+            display: block;
+            background: linear-gradient(135deg, #4a5a9c, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-intro p {
+            font-size: 1.15rem;
+            color: #a0aec0;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            opacity: 0;
+        }
+
+        .hero-intro-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            opacity: 0;
+        }
+
+        .hero-intro-btns .btn-mock {
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-intro-btns .btn-primary-mock {
+            background: linear-gradient(135deg, #4a5a9c, #3a4a8c);
+            color: #fff;
+        }
+
+        .hero-intro-btns .btn-outline-mock {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .ad-scene.active .hero-intro-nav {
+            animation: slideUp 0.6s forwards 0.2s;
+        }
+
+        .ad-scene.active .hero-intro-badge {
+            animation: slideUp 0.5s forwards 0.5s;
+        }
+
+        .ad-scene.active .hero-intro h1 .line1 {
+            animation: slideUp 0.7s forwards 0.7s;
+        }
+
+        .ad-scene.active .hero-intro h1 .line2 {
+            animation: slideUp 0.7s forwards 1.0s;
+        }
+
+        .ad-scene.active .hero-intro p {
+            animation: slideUp 0.6s forwards 1.3s;
+        }
+
+        .ad-scene.active .hero-intro-btns {
+            animation: slideUp 0.6s forwards 1.6s;
+        }
+
+        /* Scene 2: Problem */
+        .ad-problem {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 40px;
+        }
+
+        .ad-problem-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+        }
+
+        .ad-problem h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+        }
+
+        .ad-problem p {
+            font-size: 1.3rem;
+            color: #a0aec0;
+            line-height: 1.6;
+            opacity: 0;
+        }
+
+        .ad-scene.active .ad-problem-icon {
+            animation: slideUp 0.6s forwards 0.1s;
+        }
+
+        .ad-scene.active .ad-problem h2 {
+            animation: slideUp 0.6s forwards 0.3s;
+        }
+
+        .ad-scene.active .ad-problem p {
+            animation: slideUp 0.6s forwards 0.5s;
+        }
+
+        /* Scene 3: Solution */
+        .ad-solution {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .ad-solution-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 24px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+        }
+
+        .ad-solution-badge img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .ad-solution h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+        }
+
+        .ad-solution p {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            opacity: 0;
+        }
+
+        .ad-scene.active .ad-solution-badge {
+            animation: slideUp 0.6s forwards 0.1s;
+        }
+
+        .ad-scene.active .ad-solution h2 {
+            animation: slideUp 0.6s forwards 0.3s;
+        }
+
+        .ad-scene.active .ad-solution p {
+            animation: slideUp 0.6s forwards 0.5s;
+        }
+
+        /* Scene 4: Demo */
+        .ad-demo-wrapper {
+            width: 680px;
+            max-width: 90vw;
+        }
+
+        .ad-demo-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            opacity: 0;
+        }
+
+        .ad-demo-container {
+            opacity: 0;
+        }
+
+        .ad-scene.active .ad-demo-label {
+            animation: slideUp 0.5s forwards 0.1s;
+        }
+
+        .ad-scene.active .ad-demo-container {
+            animation: slideUp 0.6s forwards 0.3s;
+        }
+
+        /* Scene 5: Multi-bot */
+        .ad-multibot {
+            text-align: center;
+        }
+
+        .ad-multibot h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+        }
+
+        .ad-bot-logos {
+            display: flex;
+            gap: 56px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-bot-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            opacity: 0;
+        }
+
+        .ad-bot-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ad-bot-icon.openai {
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ad-bot-icon.claude-icon {
+            background: #d88961;
+        }
+
+        .ad-bot-icon.gemini-icon {
+            background: #1a1a2e;
+        }
+
+        .ad-bot-name {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #e0e0e0;
+        }
+
+        .ad-scene.active .ad-multibot h2 {
+            animation: slideUp 0.6s forwards 0.2s;
+        }
+
+        .ad-scene.active .ad-bot-item:nth-child(1) {
+            animation: slideUp 0.6s forwards 0.4s;
+        }
+
+        .ad-scene.active .ad-bot-item:nth-child(2) {
+            animation: slideUp 0.6s forwards 0.6s;
+        }
+
+        .ad-scene.active .ad-bot-item:nth-child(3) {
+            animation: slideUp 0.6s forwards 0.8s;
+        }
+
+        /* Scene 6: Countdown */
+        .ad-cta {
+            text-align: center;
+        }
+
+        .ad-cta-logo {
+            width: 80px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px rgba(74, 90, 156, 0.5));
+            opacity: 0;
+        }
+
+        .ad-cta-brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+
+        .ad-countdown-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 40px rgba(74, 90, 156, 0.2);
+            opacity: 0;
+        }
+
+        .ad-cd-label {
+            opacity: 0.7;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .ad-cd-timer {
+            font-variant-numeric: tabular-nums;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .ad-cta-tagline {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            margin-top: 1.5rem;
+            opacity: 0;
+        }
+
+        .ad-scene.active .ad-cta-logo {
+            animation: slideUp 0.6s forwards 0.1s;
+        }
+
+        .ad-scene.active .ad-cta-brand {
+            animation: slideUp 0.6s forwards 0.3s;
+        }
+
+        .ad-scene.active .ad-countdown-badge {
+            animation: popIn 0.8s forwards 0.6s;
+        }
+
+        .ad-scene.active .ad-cta-tagline {
+            animation: slideUp 0.6s forwards 1s;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            70% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes dotBlink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Demo overrides */
+        .chat-demo-container {
+            min-height: 420px;
+        }
+
+        .chatgpt-window,
+        .claude-window,
+        .gemini-window {
+            min-height: 420px;
+            max-height: 420px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad-glow ad-glow-1"></div>
+    <div class="ad-glow ad-glow-2"></div>
+
+    <!-- Scene 1: Website Hero Intro -->
+    <div class="ad-scene" id="scene-1">
+        <div class="hero-intro">
+            <div class="hero-intro-nav">
+                <img src="../assets/logo.svg" alt="SOWA">
+                <span>SOWA Privacy</span>
+            </div>
+            <div class="hero-intro-badge">
+                <div class="dot"></div> Coming Soon
+            </div>
+            <h1>
+                <span class="line1">AI Privacy.</span>
+                <span class="line2">On Premise.</span>
+            </h1>
+
+        </div>
+    </div>
+
+    <!-- Scene 2: Problem -->
+    <div class="ad-scene" id="scene-2">
+        <div class="ad-problem">
+            <div class="ad-problem-icon">⚠️</div>
+            <h2>Your employees are using AI</h2>
+            <p>Sensitive data is being sent uncontrolled to ChatGPT, Claude & Gemini – a massive compliance risk.</p>
+        </div>
+    </div>
+
+    <!-- Scene 3: Solution -->
+    <div class="ad-scene" id="scene-3">
+        <div class="ad-solution">
+            <div class="ad-solution-badge"><img src="../assets/logo.svg" alt="SOWA"> The Solution</div>
+            <h2>SOWA protects your data</h2>
+            <p>Automatic anonymization – before data reaches the servers.</p>
+        </div>
+    </div>
+
+    <!-- Scene 4: Live Demo -->
+    <div class="ad-scene" id="scene-4">
+        <div class="ad-demo-wrapper">
+            <div class="ad-demo-label">How it works:</div>
+            <div class="ad-demo-container">
+                <div class="chat-demo-container">
+                    <!-- ChatGPT Window -->
+                    <div class="chatgpt-window active">
+                        <div class="chatgpt-header">
+                            <div class="chatgpt-model"><strong>ChatGPT</strong> <span class="model-version">5.2</span>
+                                <i data-lucide="chevron-right" style="width:14px;height:14px;"></i>
+                            </div>
+                            <div class="chatgpt-header-actions">
+                                <i data-lucide="upload" style="width:18px;height:18px;opacity:0.5;"></i>
+                                <i data-lucide="copy" style="width:18px;height:18px;opacity:0.5;"></i>
+                            </div>
+                        </div>
+                        <div class="chatgpt-body js-chat-demo" data-lang="en"></div>
+                        <div class="chatgpt-input-area">
+                            <div class="chatgpt-input-box">
+                                <span class="chat-typing-text"></span>
+                                <span class="chat-cursor"></span>
+                                <span class="chatgpt-placeholder">Ask anything</span>
+                            </div>
+                            <div class="chatgpt-toolbar">
+                                <div class="chatgpt-toolbar-left">
+                                    <i data-lucide="plus"></i><i data-lucide="globe"></i><i data-lucide="braces"></i>
+                                    <span class="toolbar-version">5.2</span>
+                                </div>
+                                <div class="chatgpt-toolbar-right">
+                                    <i data-lucide="mic" style="width:20px;height:20px;"></i>
+                                    <button class="chatgpt-send-btn chatgpt-btn" disabled><i
+                                            data-lucide="arrow-up"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Claude Window -->
+                    <div class="claude-window hidden">
+                        <div class="claude-body js-claude-demo" data-lang="en">
+                            <div class="claude-greeting">
+                                <svg viewBox="0 0 24 24" class="claude-logo" fill="currentColor">
+                                    <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z">
+                                    </path>
+                                </svg>
+                                <h3>Coffee and Claude time?</h3>
+                            </div>
+                            <div class="claude-messages"></div>
+                        </div>
+                        <div class="claude-input-container">
+                            <div class="claude-input-area">
+                                <div class="claude-input-box">
+                                    <span class="claude-typing-text"></span>
+                                    <span class="claude-cursor"></span>
+                                    <span class="claude-placeholder">How can I help you today?</span>
+                                </div>
+                                <div class="claude-toolbar">
+                                    <i data-lucide="plus" style="width:20px;height:20px;"></i>
+                                    <div class="claude-toolbar-right">
+                                        <span class="claude-model-selector">Sonnet 4.6</span>
+                                        <button class="claude-send-btn" disabled><i data-lucide="arrow-up"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gemini Window -->
+                    <div class="gemini-window hidden">
+                        <div class="gemini-header-bar">
+                            <span class="gemini-brand">Gemini</span>
+                        </div>
+                        <div class="gemini-body js-gemini-demo" data-lang="en">
+                            <div class="gemini-greeting">
+                                <div class="gemini-sparkle-row">
+                                    <span class="gemini-sparkle"><svg viewBox="0 0 28 28" fill="none"
+                                            style="width:28px;height:28px;">
+                                            <defs>
+                                                <linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:#4285f4" />
+                                                    <stop offset="35%" style="stop-color:#9b72cb" />
+                                                    <stop offset="65%" style="stop-color:#d96570" />
+                                                    <stop offset="100%" style="stop-color:#d96570" />
+                                                </linearGradient>
+                                            </defs>
+                                            <path
+                                                d="M14 0C14 7.732 7.732 14 0 14c7.732 0 14 6.268 14 14 0-7.732 6.268-14 14-14C20.268 14 14 7.732 14 0Z"
+                                                fill="url(#gg)" />
+                                        </svg></span>
+                                    <span class="gemini-hello">Hello</span>
+                                </div>
+                                <h3>What shall we work on?</h3>
+                            </div>
+                            <div class="gemini-messages"></div>
+                        </div>
+                        <div class="gemini-input-container">
+                            <div class="gemini-input-area">
+                                <div class="gemini-input-box">
+                                    <span class="gemini-typing-text"></span>
+                                    <span class="gemini-cursor"></span>
+                                    <span class="gemini-placeholder">Ask Gemini 3</span>
+                                </div>
+                                <div class="gemini-toolbar">
+                                    <div class="gemini-toolbar-left">
+                                        <i data-lucide="plus" style="width:18px;height:18px;"></i>
+                                        <span class="gemini-tools-btn"><i data-lucide="sliders-horizontal"
+                                                style="width:14px;height:14px;"></i> Tools</span>
+                                    </div>
+                                    <div class="gemini-toolbar-right">
+                                        <span class="gemini-model-badge">Pro <i data-lucide="chevron-down"
+                                                style="width:12px;height:12px;"></i></span>
+                                        <i data-lucide="mic" style="width:18px;height:18px;"></i>
+                                        <button class="gemini-send-btn" disabled><i data-lucide="arrow-up"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 5: Multi-bot -->
+    <div class="ad-scene" id="scene-5">
+        <div class="ad-multibot">
+            <h2>Works with all AI Chatbots</h2>
+            <div class="ad-bot-logos">
+                <div class="ad-bot-item">
+                    <div class="ad-bot-icon openai">
+                        <!-- OpenAI logo -->
+                        <svg viewBox="0 0 24 24" fill="white" style="width:44px;height:44px;">
+                            <path
+                                d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.998 5.998 0 0 0-3.998 2.9 6.042 6.042 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.085a4.499 4.499 0 0 1 7.37-3.456l-.14.08-4.78 2.758a.795.795 0 0 0-.392.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z" />
+                        </svg>
+                    </div>
+                    <span class="ad-bot-name">ChatGPT</span>
+                </div>
+                <div class="ad-bot-item">
+                    <div class="ad-bot-icon claude-icon">
+                        <svg viewBox="0 0 24 24" fill="white" style="width:40px;height:40px;">
+                            <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z"></path>
+                        </svg>
+                    </div>
+                    <span class="ad-bot-name">Claude</span>
+                </div>
+                <div class="ad-bot-item">
+                    <div class="ad-bot-icon gemini-icon">
+                        <!-- Gemini 4-pointed star -->
+                        <svg viewBox="0 0 28 28" fill="none" style="width:44px;height:44px;">
+                            <defs>
+                                <linearGradient id="gem-logo" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4285f4" />
+                                    <stop offset="35%" style="stop-color:#9b72cb" />
+                                    <stop offset="65%" style="stop-color:#d96570" />
+                                    <stop offset="100%" style="stop-color:#d96570" />
+                                </linearGradient>
+                            </defs>
+                            <path
+                                d="M14 0C14 7.732 7.732 14 0 14c7.732 0 14 6.268 14 14 0-7.732 6.268-14 14-14C20.268 14 14 7.732 14 0Z"
+                                fill="url(#gem-logo)" />
+                        </svg>
+                    </div>
+                    <span class="ad-bot-name">Gemini</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 6: Countdown -->
+    <div class="ad-scene" id="scene-6">
+        <div class="ad-cta">
+            <img src="../assets/logo.svg" alt="SOWA Privacy" class="ad-cta-logo">
+            <div class="ad-cta-brand">SOWA Privacy</div>
+            <div class="ad-countdown-badge">
+                <span class="ad-cd-label">Launching in</span>
+                <span class="ad-cd-timer">
+                    <span class="ad-cd-days">28</span>d •
+                    <span class="ad-cd-hours">00</span>h •
+                    <span class="ad-cd-mins">00</span>m •
+                    <span class="ad-cd-secs">00</span>s
+                </span>
+            </div>
+            <p class="ad-cta-tagline">sowaprivacy.ai</p>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const scenes = document.querySelectorAll('.ad-scene');
+        function showScene(i) { scenes.forEach((s, j) => { s.classList.remove('active'); if (j === i) s.classList.add('active'); }); }
+        async function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+        // Accelerated demo for a specific bot
+        async function runBotDemo(botName, container, typewriterEl, cursorEl, sendBtn, placeholderEl, typedText, userHtml, placeholders, typingDotColor) {
+            const logoSrc = '../assets/logo.svg';
+            container.innerHTML = '';
+            typewriterEl.innerHTML = '';
+            if (placeholderEl) placeholderEl.style.display = '';
+            cursorEl.classList.remove('hidden');
+            sendBtn.classList.remove('active');
+            sendBtn.setAttribute('disabled', 'true');
+            await sleep(600);
+
+            // Type
+            if (placeholderEl) placeholderEl.style.display = 'none';
+            cursorEl.classList.remove('hidden');
+            for (let i = 0; i < typedText.length; i++) {
+                typewriterEl.innerHTML += typedText.charAt(i);
+                await sleep(18);
+            }
+            cursorEl.classList.add('hidden');
+            sendBtn.classList.add('active');
+            await sleep(300);
+
+            // Send
+            typewriterEl.innerHTML = '';
+            cursorEl.classList.add('hidden');
+            sendBtn.classList.remove('active');
+            if (placeholderEl) placeholderEl.style.display = '';
+
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'chat-message user';
+            let avatarHtml = `<div class="chat-avatar"><i data-lucide="user"></i></div>`;
+            msgDiv.innerHTML = `${avatarHtml}<div class="chat-bubble">${userHtml}<div class="sowa-indicator"><img src="${logoSrc}" style="width:16px;height:16px;" alt="SOWA"> SOWA</div></div>`;
+            container.appendChild(msgDiv);
+            lucide.createIcons();
+
+            const sensitiveEls = msgDiv.querySelectorAll('.sensitive-data');
+            const bubbleEl = msgDiv.querySelector('.chat-bubble');
+            await sleep(500);
+
+            // Intercept + Anonymize
+            bubbleEl.classList.add('intercepting', 'show-indicator');
+            await sleep(300);
+            for (let i = 0; i < sensitiveEls.length; i++) {
+                sensitiveEls[i].classList.add('highlighted');
+                await sleep(400);
+                sensitiveEls[i].classList.remove('highlighted');
+                sensitiveEls[i].classList.add('anonymized');
+                sensitiveEls[i].innerText = placeholders[i];
+            }
+            bubbleEl.classList.remove('intercepting');
+            await sleep(500);
+
+            // AI Response
+            const dotStyle = typingDotColor ? ` style="background:${typingDotColor};"` : '';
+            const typingMsg = document.createElement('div');
+            typingMsg.className = 'chat-message ai';
+            let aiAvatar = '';
+            if (botName === 'claude') aiAvatar = `<div class="chat-avatar" style="background:none;border:1px solid rgba(255,255,255,0.1);"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;color:#d88961;"><path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z"></path></svg></div>`;
+            else if (botName === 'gemini') aiAvatar = `<div class="chat-avatar" style="background:#1a1a2e;border:none;"><svg viewBox="0 0 28 28" fill="none" style="width:18px;height:18px;"><defs><linearGradient id="gm-av2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4285f4"/><stop offset="35%" style="stop-color:#9b72cb"/><stop offset="65%" style="stop-color:#d96570"/><stop offset="100%" style="stop-color:#d96570"/></linearGradient></defs><path d="M14 0C14 7.732 7.732 14 0 14c7.732 0 14 6.268 14 14 0-7.732 6.268-14 14-14C20.268 14 14 7.732 14 0Z" fill="url(#gm-av2)"/></svg></div>`;
+            else aiAvatar = `<div class="chat-avatar" style="background:#000;border:1px solid rgba(255,255,255,0.1);"><svg viewBox="0 0 24 24" fill="white" style="width:18px;height:18px;"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.998 5.998 0 0 0-3.998 2.9 6.042 6.042 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.085a4.499 4.499 0 0 1 7.37-3.456l-.14.08-4.78 2.758a.795.795 0 0 0-.392.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg></div>`;
+            typingMsg.innerHTML = `${aiAvatar}<div class="chat-bubble"><div class="typing-indicator"><div class="typing-dot"${dotStyle}></div><div class="typing-dot"${dotStyle}></div><div class="typing-dot"${dotStyle}></div></div></div>`;
+            container.appendChild(typingMsg);
+            lucide.createIcons();
+            await sleep(1200);
+
+            typingMsg.remove();
+            const aiMsg = document.createElement('div');
+            aiMsg.className = 'chat-message ai';
+            const responseText = placeholders.map((p, i) => `<span class="sensitive-data anonymized">${p}</span>`);
+            let responseHtml = '';
+            if (botName === 'chatgpt') responseHtml = `Summary for ${responseText[0]} (DOB ${responseText[1]}) created...`;
+            else if (botName === 'claude') responseHtml = `Project plan for ${responseText[0]} (Budget: ${responseText[1]}) created...`;
+            else responseHtml = `Email to ${responseText[0]} incl. phone ${responseText[1]} drafted...`;
+            aiMsg.innerHTML = `${aiAvatar}<div class="chat-bubble">${responseHtml}</div>`;
+            container.appendChild(aiMsg);
+            lucide.createIcons();
+            await sleep(2000);
+        }
+
+        // Countdown
+        function updateCountdown() {
+            const d = new Date("2026-03-16T09:00:00Z").getTime() - Date.now();
+            if (d < 0) return;
+            document.querySelector('.ad-cd-days').innerText = Math.floor(d / 86400000).toString().padStart(2, '0');
+            document.querySelector('.ad-cd-hours').innerText = Math.floor((d % 86400000) / 3600000).toString().padStart(2, '0');
+            document.querySelector('.ad-cd-mins').innerText = Math.floor((d % 3600000) / 60000).toString().padStart(2, '0');
+            document.querySelector('.ad-cd-secs').innerText = Math.floor((d % 60000) / 1000).toString().padStart(2, '0');
+        }
+
+        async function runAd() {
+            const wrapper = document.querySelector('.chat-demo-container');
+            const cgWin = wrapper.querySelector('.chatgpt-window');
+            const clWin = wrapper.querySelector('.claude-window');
+            const gmWin = wrapper.querySelector('.gemini-window');
+
+            // Scene 1: Hero Intro (0-5s)
+            showScene(0);
+            await sleep(5000);
+
+            // Scene 2: Problem (5-9s)
+            showScene(1);
+            await sleep(3500);
+
+            // Scene 3: Solution (9-13s)
+            showScene(2);
+            await sleep(3500);
+
+            // Scene 4: Demo
+            showScene(3);
+            await sleep(800);
+
+            // ChatGPT Demo
+            cgWin.classList.add('active'); cgWin.classList.remove('hidden');
+            clWin.classList.remove('active'); clWin.classList.add('hidden');
+            gmWin.classList.remove('active'); gmWin.classList.add('hidden');
+            await runBotDemo('chatgpt',
+                cgWin.querySelector('.js-chat-demo'),
+                cgWin.querySelector('.chat-typing-text'),
+                cgWin.querySelector('.chat-cursor'),
+                cgWin.querySelector('.chatgpt-send-btn'),
+                cgWin.querySelector('.chatgpt-placeholder'),
+                "Summarize the medical record of patient John Smith (DOB 05/12/1980).",
+                `Summarize the medical record of patient <span class="sensitive-data">John Smith</span> (DOB <span class="sensitive-data">05/12/1980</span>).`,
+                ['[PERSON_1]', '[DATE_1]'], ''
+            );
+
+            // Transition to Claude
+            cgWin.classList.remove('active'); cgWin.classList.add('hidden');
+            clWin.classList.add('active'); clWin.classList.remove('hidden');
+            const clGreeting = clWin.querySelector('.claude-greeting');
+            if (clGreeting) clGreeting.style.display = 'none';
+            await sleep(600);
+            await runBotDemo('claude',
+                clWin.querySelector('.claude-messages'),
+                clWin.querySelector('.claude-typing-text'),
+                clWin.querySelector('.claude-cursor'),
+                clWin.querySelector('.claude-send-btn'),
+                clWin.querySelector('.claude-placeholder'),
+                "Write a project plan for Acme Corp (Budget: $50,000).",
+                `Write a project plan for <span class="sensitive-data">Acme Corp</span> (Budget: <span class="sensitive-data">$50,000</span>).`,
+                ['[ORG_1]', '[MONEY_1]'], '#d88961'
+            );
+
+            // Transition to Gemini
+            clWin.classList.remove('active'); clWin.classList.add('hidden');
+            gmWin.classList.add('active'); gmWin.classList.remove('hidden');
+            const gmGreeting = gmWin.querySelector('.gemini-greeting');
+            if (gmGreeting) gmGreeting.style.display = 'none';
+            await sleep(600);
+            await runBotDemo('gemini',
+                gmWin.querySelector('.gemini-messages'),
+                gmWin.querySelector('.gemini-typing-text'),
+                gmWin.querySelector('.gemini-cursor'),
+                gmWin.querySelector('.gemini-send-btn'),
+                gmWin.querySelector('.gemini-placeholder'),
+                "Write an email to maria.schmidt@company.com (+49 170 1234567).",
+                `Write an email to <span class="sensitive-data">maria.schmidt@company.com</span> (<span class="sensitive-data">+49 170 1234567</span>).`,
+                ['[EMAIL_1]', '[PHONE_1]'], '#4285f4'
+            );
+
+            // Scene 5: Multi-bot
+            showScene(4);
+            await sleep(4000);
+
+            // Scene 6: Countdown
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            showScene(5);
+        }
+
+        runAd();
+    </script>
+</body>
+
+</html>
