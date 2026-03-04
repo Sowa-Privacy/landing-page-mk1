@@ -1843,6 +1843,7 @@ a {
         padding: 0.75rem 1rem;
         top: 0.5rem;
         border-radius: 16px;
+        z-index: 200;
     }
 
     /* Hero */
@@ -1883,11 +1884,19 @@ a {
 
     /* Chat demo */
     .chat-demo-container {
-        min-height: 400px;
+        min-height: 380px;
+        max-height: 420px;
+        overflow: hidden;
+        border-radius: var(--border-radius-sm);
+    }
+
+    .chat-demo-container>div {
+        width: 100%;
+        max-width: 100%;
     }
 
     .chatgpt-window {
-        min-height: 360px;
+        min-height: 340px;
         max-height: 400px;
     }
 
@@ -1896,9 +1905,45 @@ a {
         font-size: 0.85rem;
     }
 
+    .chatgpt-input-area {
+        padding: 8px;
+    }
+
+    .chatgpt-toolbar {
+        gap: 0.5rem;
+    }
+
+    .chatgpt-toolbar-left i,
+    .chatgpt-toolbar-right i {
+        width: 16px;
+        height: 16px;
+    }
+
+    .claude-window,
+    .gemini-window {
+        min-height: 340px;
+        max-height: 400px;
+    }
+
+    .claude-input-area,
+    .gemini-input-area {
+        padding: 8px;
+    }
+
     .chat-demo-container .claude-greeting h3,
     .chat-demo-container .gemini-greeting h3 {
         font-size: 1.3rem;
+    }
+
+    /* Hero visual column */
+    .hero-visual {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .col-half {
+        width: 100%;
     }
 
     /* Sub-hero */
