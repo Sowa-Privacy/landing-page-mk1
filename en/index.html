@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOWA Privacy | AI Privacy. On Premise.</title>
+    <meta name="description"
+        content="SOWA Privacy acts as a data protection proxy for the GDPR-compliant use of international AI systems. No cloud, 100% local anonymization.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body class="dark-theme">
+
+    <!-- Intro Splash Screen -->
+    <div class="intro-overlay" id="intro-overlay">
+        <div class="intro-logo-wrap">
+            <img src="assets/logo.svg?v=2" alt="SOWA Privacy" class="intro-logo">
+            <span class="intro-brand">SOWA Privacy</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <img src="assets/logo.svg?v=2" alt="SOWA Privacy Logo" class="logo-img">
+                <span>SOWA Privacy</span>
+            </a>
+            <div class="launch-badge hidden-mobile" id="launch-countdown">
+                <span class="cd-label">Launching in</span>
+                <span class="cd-timer">
+                    <span class="cd-days">29</span>d <span class="cd-sep">&bull;</span>
+                    <span class="cd-hours">00</span>h <span class="cd-sep">&bull;</span>
+                    <span class="cd-mins">00</span>m <span class="cd-sep">&bull;</span>
+                    <span class="cd-secs">00</span>s
+                </span>
+            </div>
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <a href="http://localhost:8080/index.html" class="lang-btn ">DE</a>
+                    <a href="#" class="lang-btn active">EN</a>
+                </div>
+                <div class="nav-links">
+                    <a href="how-it-works.html">How it works</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="about.html">About us</a>
+                </div>
+                <div class="nav-cta">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero section-padding">
+        <div class="hero-bg-glow glow-1"></div>
+        <div class="hero-bg-glow glow-2"></div>
+
+        <div class="container hero-content">
+            <div class="hero-text fade-up">
+                <h1 class="hero-headline">AI Privacy.<br><span class="gradient-text">On Premise.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    SOWA Privacy is the data protection proxy for the GDPR-compliant use of international AI systems in
+                    your organization. Protect sensitive data in real time.
+                </p>
+                <div class="hero-actions">
+                    <a href="how-it-works.html" class="btn btn-primary btn-large">Learn More</a>
+                    <a href="contact.html" class="btn btn-outline btn-large">Get Started</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-up delay-200">
+                                    <div class="chat-demo-container">
+                        <!-- ChatGPT Window -->
+                        <div class="chatgpt-window active">
+                            <!-- ChatGPT Header -->
+                            <div class="chatgpt-header">
+                                <div class="chatgpt-model"><strong>ChatGPT</strong> <span class="model-version">5.2</span>
+                                    <i data-lucide="chevron-right" style="width:14px;height:14px;"></i>
+                                </div>
+                                <div class="chatgpt-header-actions">
+                                    <i data-lucide="upload" style="width:18px;height:18px;opacity:0.5;"></i>
+                                    <i data-lucide="copy" style="width:18px;height:18px;opacity:0.5;"></i>
+                                </div>
+                            </div>
+                            <!-- Chat Messages Area -->
+                            <div class="chatgpt-body js-chat-demo" data-lang="en">
+                                <!-- Messages injected by JS -->
+                            </div>
+                            <!-- Input Area -->
+                            <div class="chatgpt-input-area">
+                                <div class="chatgpt-input-box">
+                                    <span class="chat-typing-text"></span>
+                                    <span class="chat-cursor"></span>
+                                    <span class="chatgpt-placeholder">Ask anything</span>
+                                </div>
+                                <div class="chatgpt-toolbar">
+                                    <div class="chatgpt-toolbar-left">
+                                        <i data-lucide="plus"></i>
+                                        <i data-lucide="globe"></i>
+                                        <i data-lucide="braces"></i>
+                                        <i data-lucide="sparkles"></i>
+                                        <span class="toolbar-version">5.2</span>
+                                    </div>
+                                    <div class="chatgpt-toolbar-right">
+                                        <i data-lucide="circle" style="width:20px;height:20px;"></i>
+                                        <i data-lucide="mic" style="width:20px;height:20px;"></i>
+                                        <button class="chatgpt-send-btn chatgpt-btn" disabled><i data-lucide="arrow-up"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Claude Window -->
+                        <div class="claude-window hidden">
+                            <div class="claude-body js-claude-demo" data-lang="en">
+                                <div class="claude-greeting">
+                                    <svg viewBox="0 0 24 24" class="claude-logo" fill="currentColor">
+                                        <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z"></path>
+                                    </svg>
+                                    <h3>Coffee and Claude time?</h3>
+                                </div>
+                                <!-- Messages injected by JS -->
+                                <div class="claude-messages"></div>
+                            </div>
+                            <div class="claude-input-container">
+                                <div class="claude-input-area">
+                                    <div class="claude-input-box">
+                                        <span class="claude-typing-text"></span>
+                                        <span class="claude-cursor"></span>
+                                        <span class="claude-placeholder">How can I help you today?</span>
+                                    </div>
+                                    <div class="claude-toolbar">
+                                        <i data-lucide="plus" style="width: 20px; height: 20px;"></i>
+                                        <div class="claude-toolbar-right">
+                                            <span class="claude-model-selector">Sonnet 4.6 <span style="opacity:0.5">Extended</span> <i data-lucide="chevron-down" style="width:14px;height:14px;margin-left:4px;"></i></span>
+                                            <button class="claude-send-btn" disabled><i data-lucide="arrow-up"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="claude-footer">
+                                    <span>Connect your tools to Claude</span>
+                                    <div class="claude-tools">
+                                       <i data-lucide="book" style="width:12px;height:12px;"></i>
+                                       <i data-lucide="database" style="width:12px;height:12px;"></i>
+                                       <i data-lucide="globe" style="width:12px;height:12px;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gemini Window -->
+                        <div class="gemini-window hidden">
+                            <div class="gemini-header-bar">
+                                <span class="gemini-brand">Gemini</span>
+                            </div>
+                            <div class="gemini-body js-gemini-demo" data-lang="en">
+                                <div class="gemini-greeting">
+                                    <div class="gemini-sparkle-row"><span class="gemini-sparkle"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
+  <defs>
+    <linearGradient id="gemini-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4285f4"/>
+      <stop offset="35%" style="stop-color:#9b72cb"/>
+      <stop offset="65%" style="stop-color:#d96570"/>
+      <stop offset="100%" style="stop-color:#d96570"/>
+    </linearGradient>
+  </defs>
+  <path d="M14 0C14 7.732 7.732 14 0 14c7.732 0 14 6.268 14 14 0-7.732 6.268-14 14-14C20.268 14 14 7.732 14 0Z" fill="url(#gemini-grad)"/>
+</svg></span> <span class="gemini-hello">Hello</span></div>
+                                    <h3>What shall we work on?</h3>
+                                </div>
+                                <div class="gemini-messages"></div>
+                            </div>
+                            <div class="gemini-input-container">
+                                <div class="gemini-input-area">
+                                    <div class="gemini-input-box">
+                                        <span class="gemini-typing-text"></span>
+                                        <span class="gemini-cursor"></span>
+                                        <span class="gemini-placeholder">Ask Gemini 3</span>
+                                    </div>
+                                    <div class="gemini-toolbar">
+                                        <div class="gemini-toolbar-left">
+                                            <i data-lucide="plus" style="width:18px;height:18px;"></i>
+                                            <span class="gemini-tools-btn"><i data-lucide="sliders-horizontal" style="width:14px;height:14px;"></i> Tools</span>
+                                        </div>
+                                        <div class="gemini-toolbar-right">
+                                            <span class="gemini-model-badge">Pro <i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                                            <i data-lucide="mic" style="width:18px;height:18px;"></i>
+                                            <button class="gemini-send-btn" disabled><i data-lucide="arrow-up"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem section-padding bg-alt">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <h2 class="section-title">The AI Compliance Dilemma</h2>
+                <p class="section-description">Employees use ChatGPT & Co. – but entering highly sensitive data poses
+                    enormous legal risks.</p>
+            </div>
+
+            <div class="grid-3 problem-grid">
+                <div class="card glass hover-lift fade-up delay-100">
+                    <div class="card-icon red-glow"><i data-lucide="alert-triangle"></i></div>
+                    <h3>Data Leakage</h3>
+                    <p>Personal data, health information, or contract contents end up with international AI providers in
+                        third countries.</p>
+                </div>
+                <div class="card glass hover-lift fade-up delay-200">
+                    <div class="card-icon red-glow"><i data-lucide="gavel"></i></div>
+                    <h3>GDPR Violations</h3>
+                    <p>Lack of control over Art. 9 GDPR data leads to incalculable compliance risks and potential
+                        penalties.</p>
+                </div>
+                <div class="card glass hover-lift fade-up delay-300">
+                    <div class="card-icon red-glow"><i data-lucide="server-crash"></i></div>
+                    <h3>Shadow IT</h3>
+                    <p>A complete AI ban drives users into unregulated gray areas; internal infrastructure projects
+                        often fail due to complexity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Industry Section -->
+    <section id="branchen" class="industries section-padding bg-alt">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <h2 class="section-title">For Every Critical Infrastructure</h2>
+                <p class="section-description">SOWA Privacy is industry-agnostic and protects where it matters most.</p>
+            </div>
+
+            <div class="grid-4 industry-grid">
+                <div class="industry-card glass fade-up delay-100">
+                    <i data-lucide="landmark"></i>
+                    <h4>Public Sector</h4>
+                    <p>Authorities & Ministries</p>
+                </div>
+                <div class="industry-card glass fade-up delay-200">
+                    <i data-lucide="activity"></i>
+                    <h4>Healthcare</h4>
+                    <p>Protection of Patient Data</p>
+                </div>
+                <div class="industry-card glass fade-up delay-300">
+                    <i data-lucide="briefcase"></i>
+                    <h4>Finance & Legal</h4>
+                    <p>Contract & Account Data</p>
+                </div>
+                <div class="industry-card glass fade-up delay-400">
+                    <i data-lucide="factory"></i>
+                    <h4>Industry & KRITIS</h4>
+                    <p>Secure Trade Secrets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Enterprise / Open Source Section -->
+    <section id="funktionen" class="enterprise section-padding">
+        <div class="container container-narrow text-center fade-up">
+            <h2 class="section-title">Open Source Core. <br>Enterprise Distribution.</h2>
+            <p class="section-description">We rely on transparency for maximum trust. SOWA Privacy offers an open core
+                system, complemented by enterprise services.</p>
+
+            <div class="pricing-cards">
+                <div class="card glass pricing-card fade-up delay-100">
+                    <div class="card-header">
+                        <h3>Community Edition</h3>
+                        <div class="price">Open Source</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check"></i> Basic Anonymization Logic</li>
+                        <li><i data-lucide="check"></i> Browser Extension Code</li>
+                        <li><i data-lucide="check"></i> Community Support</li>
+                        <li><i data-lucide="minus"></i> No Policy Control</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline btn-full">View GitHub</a>
+                </div>
+
+                <div class="card glass pricing-card highlighted fade-up delay-200">
+                    <div class="card-header">
+                        <h3>Enterprise Version</h3>
+                        <div class="price">For Organizations</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check"></i> Certified Distribution</li>
+                        <li><i data-lucide="check"></i> SLA & Premium Support</li>
+                        <li><i data-lucide="check"></i> Organization-wide Policies</li>
+                        <li><i data-lucide="check"></i> Auditable Reporting</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary btn-full">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about section-padding bg-alt">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <h2 class="section-title">About SOWA Privacy</h2>
+                <p class="section-description">Our mission is to bridge the gap between data protection and
+                    technological progress.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-row fade-up delay-100">
+                    <div class="about-image">
+                        <img src="assets/logo.svg?v=2" alt="SOWA Privacy Logo" class="about-logo-img">
+                    </div>
+                    <div class="about-text">
+                        <h3>Privacy by Default</h3>
+                        <p>SOWA Privacy was born from the conviction that utilizing cutting-edge AI systems should never
+                            come at the expense of individual privacy or business-critical secrets.</p>
+                        <p>We created an architecture that establishes "Sovereign AI" not just as a buzzword, but as a
+                            technical standard. Through complete local processing, we give companies full control over
+                            their data back.</p>
+                        <a href="about.html" class="btn btn-outline" style="margin-top: 1.5rem;">Learn more about our
+                            mission</a>
+                    </div>
+                </div>
+
+                <div class="values-grid fade-up delay-200">
+                    <div class="value-card glass">
+                        <div class="value-icon"><i data-lucide="shield-check"></i></div>
+                        <h4>Zero-Trust</h4>
+                        <p>We trust no cloud. Your data is processed before it ever leaves your device.</p>
+                    </div>
+                    <div class="value-card glass">
+                        <div class="value-icon"><i data-lucide="eye-off"></i></div>
+                        <h4>Transparency</h4>
+                        <p>Our core is open source. Anyone can verify how we implement anonymization.</p>
+                    </div>
+                    <div class="value-card glass">
+                        <div class="value-icon"><i data-lucide="zap"></i></div>
+                        <h4>Agility</h4>
+                        <p>Real-time protection without the need for complex infrastructure projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Footer -->
+    <footer id="kontakt" class="footer section-padding bg-alt text-center">
+        <div class="container container-narrow fade-up">
+            <h2 class="section-title">Make your AI usage sovereign.</h2>
+            <p class="section-description">Contact us for a demonstration of the SOWA Privacy Proxy architecture.</p>
+
+            <a href="contact.html" class="btn btn-primary btn-large"
+                style="margin-top: 1.5rem; margin-bottom: 1.5rem; display: inline-block;">Get Started</a>
+            <p class="sub-text">Fast integration via Master Policy. No cloud migration necessary.</p>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container flex-between">
+                <div class="logo-small"><img src="assets/logo.svg" alt="SOWA Privacy Logo" class="logo-img"> SOWA
+                    Privacy</div>
+                <div class="footer-links">
+                    <a href="#">Imprint</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61586603282806" target="_blank"
+                        rel="noopener noreferrer" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                    <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                    <a href="https://www.instagram.com/sowaprivacy/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="https://x.com/SOWAPrivacy" target="_blank" rel="noopener noreferrer"
+                        aria-label="X (Twitter)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                        </svg></a>
+                    <a href="https://www.linkedin.com/company/sowa-privacy/about/?viewAsMember=true" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                    <a href="https://www.tiktok.com/@sowaprivacy" target="_blank" rel="noopener noreferrer"
+                        aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg></a>
+                </div>
+                <div class="copyright">&copy; 2026 SOWA Privacy. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Init JS Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
