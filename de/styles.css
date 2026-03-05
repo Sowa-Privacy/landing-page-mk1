@@ -1861,6 +1861,19 @@ a {
         align-self: flex-start;
     }
 
+    /* Countdown badge on mobile */
+    .launch-badge {
+        padding: 0.25rem 0.6rem;
+        gap: 0.3rem;
+        font-size: 0.65rem;
+        margin-left: auto;
+        margin-right: 0.5rem;
+    }
+
+    .cd-label {
+        display: none;
+    }
+
     /* Navbar mobile */
     .navbar {
         width: calc(100% - 1rem);
