@@ -2126,6 +2126,15 @@ a {
         padding: 1.25rem;
     }
 
+    .problem-grid .card {
+        text-align: center;
+    }
+
+    .problem-grid .card-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .card-icon {
         width: 48px;
         height: 48px;
