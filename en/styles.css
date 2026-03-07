@@ -1886,8 +1886,12 @@ a {
     /* Hero */
     .hero {
         min-height: auto;
-        padding-top: 5.5rem;
+        padding-top: 7.5rem;
         padding-bottom: 0;
+    }
+
+    .hero-content {
+        gap: 1.5rem;
     }
 
     .hero-headline {
