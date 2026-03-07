@@ -2356,6 +2356,7 @@ a {
     border: none;
     box-shadow: none;
     background: transparent;
+    overflow: visible;
 }
 
 .about-row:hover .about-image img {
