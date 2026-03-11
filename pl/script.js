@@ -194,9 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 pl: {
                     typedText: "Utwórz podsumowanie dokumentacji medycznej pacjenta Jan Kowalski (ur. 12.05.1980).",
-                    userMsgHtml: \`Utwórz podsumowanie dokumentacji medycznej pacjenta <span class="sensitive-data">Jan Kowalski</span> (ur. <span class="sensitive-data">12.05.1980</span>).\`,
-                    aiTyping: \`<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>\`,
-                    aiResponseHtml: \`Przygotowałem podsumowanie dokumentacji medycznej dla <span class="sensitive-data anonymized">[PERSON_1]</span> (ur. <span class="sensitive-data anonymized">[DATE_1]</span>). Proszę zwrócić uwagę...\`
+                    userMsgHtml: `Utwórz podsumowanie dokumentacji medycznej pacjenta <span class="sensitive-data">Jan Kowalski</span> (ur. <span class="sensitive-data">12.05.1980</span>).`,
+                    aiTyping: `<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`,
+                    aiResponseHtml: `Przygotowałem podsumowanie dokumentacji medycznej dla <span class="sensitive-data anonymized">[PERSON_1]</span> (ur. <span class="sensitive-data anonymized">[DATE_1]</span>). Proszę zwrócić uwagę...`
                 },
             },
             claude: {
@@ -214,9 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 pl: {
                     typedText: "Napisz plan projektu dla naszego klienta Acme Corp (budżet: 50 000 zł).",
-                    userMsgHtml: \`Napisz plan projektu dla naszego klienta <span class="sensitive-data">Acme Corp</span> (budżet: <span class="sensitive-data">50 000 zł</span>).\`,
-                    aiTyping: \`<div class="typing-indicator"><div class="typing-dot" style="background:#d88961;"></div><div class="typing-dot" style="background:#d88961;"></div><div class="typing-dot" style="background:#d88961;"></div></div>\`,
-                    aiResponseHtml: \`Oto projekt planu dla <span class="sensitive-data anonymized">[ORG_1]</span> z budżetem <span class="sensitive-data anonymized">[MONEY_1]</span>...\`
+                    userMsgHtml: `Napisz plan projektu dla naszego klienta <span class="sensitive-data">Acme Corp</span> (budżet: <span class="sensitive-data">50 000 zł</span>).`,
+                    aiTyping: `<div class="typing-indicator"><div class="typing-dot" style="background:#d88961;"></div><div class="typing-dot" style="background:#d88961;"></div><div class="typing-dot" style="background:#d88961;"></div></div>`,
+                    aiResponseHtml: `Oto projekt planu dla <span class="sensitive-data anonymized">[ORG_1]</span> z budżetem <span class="sensitive-data anonymized">[MONEY_1]</span>...`
                 },
             },
             gemini: {
@@ -234,9 +234,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 pl: {
                     typedText: "Napisz e-mail do maria.kowalska@firma.pl z numerem telefonu +48 170 1234567.",
-                    userMsgHtml: \`Napisz e-mail do <span class="sensitive-data">maria.kowalska@firma.pl</span> z numerem telefonu <span class="sensitive-data">+48 170 1234567</span>.\`,
-                    aiTyping: \`<div class="typing-indicator"><div class="typing-dot" style="background:#4285f4;"></div><div class="typing-dot" style="background:#4285f4;"></div><div class="typing-dot" style="background:#4285f4;"></div></div>\`,
-                    aiResponseHtml: \`Oto szkic e-maila do <span class="sensitive-data anonymized">[EMAIL_1]</span> z numerem telefonu <span class="sensitive-data anonymized">[PHONE_1]</span>...\`
+                    userMsgHtml: `Napisz e-mail do <span class="sensitive-data">maria.kowalska@firma.pl</span> z numerem telefonu <span class="sensitive-data">+48 170 1234567</span>.`,
+                    aiTyping: `<div class="typing-indicator"><div class="typing-dot" style="background:#4285f4;"></div><div class="typing-dot" style="background:#4285f4;"></div><div class="typing-dot" style="background:#4285f4;"></div></div>`,
+                    aiResponseHtml: `Oto szkic e-maila do <span class="sensitive-data anonymized">[EMAIL_1]</span> z numerem telefonu <span class="sensitive-data anonymized">[PHONE_1]</span>...`
                 },
             }
         };
