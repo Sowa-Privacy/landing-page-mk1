@@ -426,20 +426,51 @@ document.addEventListener('DOMContentLoaded', () => {
             const interest = document.getElementById('interest').value || '';
             const message = document.getElementById('message').value || '';
 
-            // Construct email body
-            let bodyText = `Name: ${name}\n`;
-            bodyText += `E-Mail: ${email}\n`;
-            if (company) bodyText += `Company/Unternehmen: ${company}\n`;
-            if (phone) bodyText += `Phone/Telefon: ${phone}\n`;
-            if (interest) bodyText += `Interest/Interesse: ${interest}\n`;
-            if (message) bodyText += `\nMessage/Nachricht:\n${message}\n`;
+            // API integration via Web3Forms (does not require backend code)
+            // You need to generate an access key for info@sowaprivacy.com at https://web3forms.com/
+            const formData = new FormData();
+            formData.append("access_key", "56f879be-6747-4cfb-b218-705237917660"); // <-- Insert your access key here
+            formData.append("subject", "Neue Kontaktanfrage: " + name);
+            formData.append("from_name", name);
+            formData.append("email", email);
+            if (company) formData.append("company", company);
+            if (phone) formData.append("phone", phone);
+            if (interest) formData.append("interest", interest);
+            if (message) formData.append("message", message);
 
-            // URI encode
-            const subject = encodeURIComponent('New Contact Request: ' + name);
-            const body = encodeURIComponent(bodyText);
+            const btn = contactForm.querySelector('button');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = 'Wird gesendet...';
+            btn.disabled = true;
 
-            // Open mailto link
-            window.location.href = `mailto:info@sowaprivacy.com?subject=${subject}&body=${body}`;
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                if (response.status === 200) {
+                    btn.innerHTML = '<i data-lucide="check-circle" style="width:18px;height:18px;margin-right:8px;vertical-align:middle;"></i> Erfolgreich gesendet!';
+                    btn.style.background = 'var(--success)';
+                    btn.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.4)';
+                    lucide.createIcons();
+                    contactForm.reset();
+                } else {
+                    btn.innerHTML = 'Fehler! Bitte erneut versuchen.';
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                btn.innerHTML = 'Fehler! Bitte erneut versuchen.';
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.style.boxShadow = '';
+                    btn.disabled = false;
+                    lucide.createIcons();
+                }, 4000);
+            });
         });
     }
 
