@@ -2458,6 +2458,13 @@ a {
     align-items: start;
 }
 
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 .contact-section {
     padding-top: 2rem;
 }
